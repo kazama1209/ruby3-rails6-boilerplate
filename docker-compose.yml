@@ -1,0 +1,49 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - /tmp/dockerdir:/etc/mysql/conf.d/
+    ports:
+      - 4306:3306
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    command: bundle exec puma -C config/puma.rb
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/myapp
+      - ./vendor/bundle:/myapp/vendor/bundle
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/var/log/nginx
+    environment:
+      TZ: Asia/Tokyo
+      RAILS_ENV: development
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
+volumes:
+  public-data:
+  tmp-data:
+    driver: local
+  log-data:
+    driver: local
+  mysql-data:
