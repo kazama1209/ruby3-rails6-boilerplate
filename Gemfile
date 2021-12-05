@@ -55,6 +55,9 @@ group :development do
 
   # Vulnerability Checking
   gem "brakeman", :require => false
+
+  # N+1
+  gem "bullet"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
