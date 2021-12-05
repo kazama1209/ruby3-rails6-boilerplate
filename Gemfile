@@ -52,6 +52,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
 
+  # Mail
+  gem "letter_opener_web"
+  
   # Code Check
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
