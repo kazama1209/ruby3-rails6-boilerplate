@@ -82,6 +82,9 @@ gem "html2slim"
 # Decorator
 gem "draper"
 
+# Master Data
+gem "active_hash"
+
 # Logging
 gem "lograge"
 gem "logstash-event"
