@@ -76,6 +76,9 @@ gem "enum_help"
 gem "slim-rails"
 gem "html2slim"
 
+# Decorator
+gem "draper"
+
 # Logging
 gem "lograge"
 gem "logstash-event"
