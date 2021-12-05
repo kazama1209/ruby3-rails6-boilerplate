@@ -1,24 +1,46 @@
-# README
+# ruby3-rails6-boilerplate
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby3 × Rails6 で Web アプリを作る際に良く使う gem や node_modules をまとめたボイラープレート。
 
-Things you may want to cover:
+## 内容
 
-* Ruby version
+- テンプレートエンジン
+  - slim-rails
+- デコレーター
+  - draper
+- メール
+  - letter_opener_web
+- マスターデータ
+  - active_hash
+- 　テスト
+  - rspec-rails
+  - factory_bot_rails
+- コード解析
+  - rubocop
+- 脆弱性チェック
+  - brakeman
+- N+1問題チェック
+  - bullet
+- ロギング
+  - lograge
+  - logstash-event
+- デバッガー
+  - pry-rails
+- i18n
+  - rails-i18n
+  - enum_help
+- デザイン
+  - bootstrap
+  - fontawesome
+- 環境変数
+  - dotenv-rails
 
-* System dependencies
+## セットアップ
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ docker-compose build
+$ docker-compose run web yarn install --check-files
+$ docker-compose run web bundle exec rails webpacker:install
+$ docker-compose up -d
+$ docker-compose run web bundle exec rails db:create
+```
